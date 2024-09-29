@@ -12,7 +12,7 @@ WebServer::WebServer(EventLoop* _eventloop): eventloop(_eventloop) {
     Channel* server_channel = new Channel(eventloop, sockfd->getfd());
     std::function<void()> cb = std::bind(&WebServer::eventListen, this, sockfd);    //要使用this指针就必须正确绑定WebServer类中的成员函数 -> 加WebServer::
     server_channel->setCallback(cb);
-    server_channel->enableReading();/
+    server_channel->enableReading();
 }
 
 WebServer::~WebServer() {
